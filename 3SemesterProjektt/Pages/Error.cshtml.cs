@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Logging;
 
 namespace _3SemesterProjektt.Pages
 {
@@ -12,6 +13,13 @@ namespace _3SemesterProjektt.Pages
     public class ErrorModel : PageModel
     {
         public string RequestId { get; set; }
+
+        private readonly ILogger<ErrorModel> logger;
+
+        public ErrorModel(ILogger<ErrorModel> logger)
+        {
+            this.logger = logger;
+        }
 
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
 
